@@ -113,12 +113,11 @@
 
             <div class="join join-vertical mx-3">
                 <label class="mr-2 font-bold">Kendaraan:</label>
-                <select v-model="jenisKendaran" class="select select-bordered w-60 mt-5" :disabled="!showEdit" required>
-                    <option></option>
-                    <option>Kendaraan Dinas </option>
-                    <option selected>Kendaraan Umum</option>
-                    <option>Kendaraan Operasional</option>
+                <select v-show="showEdit" v-model="jenisKendaran" class="select select-bordered w-60 mt-5" required>
+                    <option v-for="list in listKendaraan" :value="list.nama">{{ list.nama }}</option>
                 </select>
+                <input v-model="jenisKendaraan" type="text" class="input input-bordered  my-2 w-60" v-show="!showEdit"
+                    disabled>
             </div>
 
             <div class="join join-vertical mx-3">
@@ -174,7 +173,18 @@ export default {
             jenisKendaran: "",
             tujuanBerangkat: "",
 
-            listPegawai: []
+            listPegawai: [],
+            listKendaraan: [
+                {
+                    nama: "Kendaraan Dinas",
+                },
+                {
+                    nama: "Kendaraan Umum",
+                },
+                {
+                    nama: "Kendaraan Operasional"
+                }
+            ]
         }
     },
     methods: {
@@ -202,6 +212,8 @@ export default {
             this.tanggalBerangkat = data.tanggalBerangkat
             this.tanggalKembali = data.tanggalKembali
             this.pptk = data.pptk
+            this.jenisKendaraan = data.jenisKendaraan
+            this.tujuanBerangkat = data.tujuanBerangkat
 
         },
         async getListPegawai() {
