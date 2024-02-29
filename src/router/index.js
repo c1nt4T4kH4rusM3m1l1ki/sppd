@@ -5,6 +5,7 @@ import Profile from "../views/PegawaiDetail/Profil.vue";
 import NewSpt from "../views/spt/sptBaru.vue";
 import EdiSpt from "../views/spt/editSpt.vue";
 import Login from "../views/login.vue";
+import NotFound from "../views/404.vue";
 
 const isAuthenticated = localStorage.getItem("isAuth") === "xxxXXXxxx";
 
@@ -24,13 +25,13 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-      // beforeEnter: redirecAuth,
+      beforeEnter: redirecAuth,
     },
     {
       path: "/nama-pegawai",
       name: "nama-pegawai",
       component: NamaPegawaiVue,
-      // beforeEnter: redirecAuth,
+      beforeEnter: redirecAuth,
     },
     {
       path: "/nama-pegawai/:id",
@@ -52,6 +53,14 @@ const router = createRouter({
       name: "login",
       component: Login,
       // beforeEnter: udahLogin,
+    },
+    {
+      path: "/:catchAll(.*)",
+      nama: "404",
+      component: NotFound,
+      beforeEnter: (to, from, next) => {
+        next(from.fullPath);
+      },
     },
   ],
 });
