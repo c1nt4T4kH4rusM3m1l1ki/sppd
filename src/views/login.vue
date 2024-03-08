@@ -37,7 +37,7 @@
             <!-- button -->
             <div class="card-body items-center text-center">
                 <div class="card-actions">
-                    <button type="submit" class="btn btn-outline" @click="login">LOGIN</button>
+                    <button type="submit" class="btn btn-outline" @click.prevent="login">LOGIN</button>
                 </div>
             </div>
         </div>
