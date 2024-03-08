@@ -24,7 +24,7 @@ export default {
     methods: {
         Logout() {
             localStorage.removeItem("isAuth"); // Hapus nilai autentikasi
-            location.href = "/login";
+            location.href = "/";
         }
 
     },

@@ -46,7 +46,7 @@ const router = createRouter({
     {
       path: "/:catchAll(.*)",
       nama: "404",
-      component: NotFound,
+      redirect: "/",
     },
   ],
 });
