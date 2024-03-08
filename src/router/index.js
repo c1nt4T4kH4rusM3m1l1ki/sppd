@@ -17,13 +17,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-      beforeEnter: redirecAuth,
     },
     {
       path: "/nama-pegawai",
       name: "nama-pegawai",
       component: NamaPegawaiVue,
-      beforeEnter: redirecAuth,
     },
     {
       path: "/nama-pegawai/:id",
@@ -44,15 +42,11 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: Login,
-      // beforeEnter: udahLogin,
     },
     {
       path: "/:catchAll(.*)",
       nama: "404",
       component: NotFound,
-      beforeEnter: (to, from, next) => {
-        next(from.fullPath);
-      },
     },
   ],
 });
