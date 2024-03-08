@@ -9,14 +9,6 @@ import NotFound from "../views/404.vue";
 
 const isAuthenticated = localStorage.getItem("isAuth") === "xxxXXXxxx";
 
-const redirecAuth = (to, from, next) => {
-  if (!isAuthenticated) {
-    next({ name: "login" });
-  } else {
-    next();
-  }
-};
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
 
@@ -65,14 +57,14 @@ const router = createRouter({
   ],
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (!isAuthenticated && to.path !== "/login") {
-//     next({ path: "/login" });
-//   } else if (isAuthenticated && to.path === "/login") {
-//     next({ path: "/" });
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (!isAuthenticated && to.path !== "/login") {
+    next({ path: "/login" });
+  } else if (isAuthenticated && to.path === "/login") {
+    next({ path: "/" });
+  } else {
+    next();
+  }
+});
 
 export default router;
