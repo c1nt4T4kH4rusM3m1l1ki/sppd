@@ -70,7 +70,7 @@ export default {
 
             if (!this.UserError && !this.PassError) {
                 localStorage.setItem('isAuth', 'xxxXXXxxx')
-                router.push({ path: '/' })
+                location.href = "/"
             }
         }
 
