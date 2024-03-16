@@ -36,7 +36,7 @@
             <tr v-for=" row  in  sptModel " :key="row[0]">
               <th class="border border-gray-400 text-center hidden">{{ row[0] }}</th>
               <td class="border border-gray-400">
-                <ol class="text-start ml-4 list-disc">
+                <ol class="text-start ml-4 list-none">
                   <li>{{ row[1].person }}</li>
                   <li>{{ row[1].pengikut1 }}</li>
                   <li>{{ row[1].pengikut2 }}</li>
@@ -57,43 +57,43 @@
                     <span class="font-bold link link-hover" @click="toggleSpt">SPT</span>
                     <ul v-show="showSpt">
                       <li><a class="link link-hover" @click="buatSptWako(row[0],
-                        // idSpt, urlSpd, laporan, sptKaban, sptSekda
-                        row[1].url.spd,
-                        row[1].url.laporan,
-                        row[1].url.sptKaban,
-                        row[1].url.sptSekda
-                      )">Wako</a></li>
+        // idSpt, urlSpd, laporan, sptKaban, sptSekda
+        row[1].url.spd,
+        row[1].url.laporan,
+        row[1].url.sptKaban,
+        row[1].url.sptSekda
+      )">Wako</a></li>
                       <li><a class="link link-hover" @click="buatSptSekda(row[0],
-                        row[1].url.spd,
-                        row[1].url.laporan,
-                        row[1].url.sptKaban,
-                        row[1].url.sptWalikota
-                      )">Sekda</a></li>
+        row[1].url.spd,
+        row[1].url.laporan,
+        row[1].url.sptKaban,
+        row[1].url.sptWalikota
+      )">Sekda</a></li>
                       <li><a class="link link-hover" @click="buatSptKaban(row[0],
-                        row[1].url.spd,
-                        row[1].url.laporan,
-                        row[1].url.sptSekda,
-                        row[1].url.sptWalikota
-                      )">Kaban</a></li>
+        row[1].url.spd,
+        row[1].url.laporan,
+        row[1].url.sptSekda,
+        row[1].url.sptWalikota
+      )">Kaban</a></li>
 
                     </ul>
                   </li>
 
                   <li class="font-bold link link-hover" @click="buatSPD(row[0],
-                    row[1].url.laporan,
-                    row[1].url.sptKaban,
-                    row[1].url.sptSekda,
-                    row[1].url.sptWalikota,
-                  )">
+        row[1].url.laporan,
+        row[1].url.sptKaban,
+        row[1].url.sptSekda,
+        row[1].url.sptWalikota,
+      )">
                     SPD
                   </li>
 
                   <li class="font-bold link link-hover" @click="buatLaporan(row[0],
-                    row[1].url.spd,
-                    row[1].url.sptKaban,
-                    row[1].url.sptSekda,
-                    row[1].url.sptWalikota,
-                  )">
+        row[1].url.spd,
+        row[1].url.sptKaban,
+        row[1].url.sptSekda,
+        row[1].url.sptWalikota,
+      )">
                     LAPORAN
                   </li>
                 </ul>

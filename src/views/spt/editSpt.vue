@@ -31,30 +31,14 @@
             </div>
         </div>
         <!-- untuk dan pengikut -->
-        <div class="container grid grid-cols-2 rounded-b-lg border-b-2 border-l-2 border-r-2 border-gray-400 p-4">
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Untuk (Misi SPT) :</label>
-                <ul class="grid grid-cols-1">
-                    <li>
-                        <input v-model="parta" type="text" class="input input-bordered w-full my-2 text-sm"
-                            :disabled="!showEdit" required>
-                    </li>
-                    <li>
-                        <input v-model="partb" type="text" class="text-sm input input-bordered w-full my-2"
-                            :disabled="!showEdit">
-                    </li>
-                    <li>
-                        <input v-model="partc" type="text" class="text-sm input input-bordered w-full my-2"
-                            :disabled="!showEdit">
-                    </li>
+        <div class="container grid grid-cols-2  border-l-2 border-r-2 border-gray-400 p-4">
 
-                </ul>
-            </div>
             <div class="join join-vertical mx-3">
                 <div class="grid grid-cols-2">
                     <div>
                         <label class="mr-2 font-bold">Yang Melaksanakan:</label>
-                        <select class="select select-bordered w-60 mt-5" :disabled="!showEdit" v-model="person" required>
+                        <select class="select select-bordered w-60 mt-5" :disabled="!showEdit" v-model="person"
+                            required>
                             <option>...</option>
                             <option v-for="dt in listPegawai" :key="dt.id">{{ dt.nama }}</option>
                         </select>
@@ -77,49 +61,50 @@
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="join join-vertical mx-3">
+                <div class="grid grid-cols-2">
+                    <!-- tanggal Berangkat Kembali -->
+                    <div>
+                        <div class="join join-vertical mx-3">
+                            <label class="mr-2 font-bold">Tanggal Berangkat:</label>
+                            <input v-model="tanggalBerangkat" type="date"
+                                class="input input-bordered input-lg text-md h-12 w-60" :disabled="!showEdit" required>
+                        </div>
+                        <div class="join join-vertical mx-3 mt-5">
+                            <label class="mr-2 font-bold">Tanggal Kembali:</label>
+                            <input v-model="tanggalKembali" type="date"
+                                class="input input-bordered input-lg text-md h-12 w-60" :disabled="!showEdit" required>
+                        </div>
+                    </div>
+                    <!-- tujuan kendaraan -->
+                    <div>
+                        <div class="join join-vertical mx-3">
+                            <label class="mr-2 font-bold ">Tujuan:</label>
+                            <input v-model="tujuanBerangkat" type="text" class="input input-bordered  my-2 w-60"
+                                :disabled="!showEdit" required>
+                        </div>
+                        <div class="join join-vertical mt-3 mx-3">
+                            <label class="mr-2 font-bold">Jenis Kendaraan:</label>
+                            <select v-show="showEdit" v-model="jenisKendaran" class="select select-bordered w-60 mt-5"
+                                required>
+                                <option v-for="list in listKendaraan" :value="list.nama">{{ list.nama }}</option>
+                            </select>
+                            <input v-model="jenisKendaraan" type="text" class="input input-bordered  my-2 w-60"
+                                v-show="!showEdit" disabled>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
 
-        <hr>
+
         <!-- TANGGAL-->
         <!-- tanggal SPT -->
-        <h2 class="text-center font-bold text-xl my-5 ">Tanggal</h2>
-        <div class="container grid grid-cols-4 rounded-t-lg border-t-2 border-l-2 border-r-2 border-gray-400 p-4">
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Tanggal SPT:</label>
-                <input v-model="tanggalSpt" type="date" class="input input-bordered input-lg text-md" :disabled="!showEdit"
-                    required>
-            </div>
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Tanggal SPPD:</label>
-                <input v-model="tanggalSpd" type="date" class="input input-bordered input-lg text-md" :disabled="!showEdit"
-                    required>
-            </div>
-            <!-- tanggal Berangkat Kembali -->
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Berangkat:</label>
-                <input v-model="tanggalBerangkat" type="date" class="input input-bordered input-lg text-md"
-                    :disabled="!showEdit" required>
-            </div>
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Kembali:</label>
-                <input v-model="tanggalKembali" type="date" class="input input-bordered input-lg text-md"
-                    :disabled="!showEdit" required>
-            </div>
-        </div>
 
-        <div class="container mb-40 p-4 rounded-b-lg border-b-2 border-l-2 border-r-2 border-gray-400 grid grid-cols-3 ">
-
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Kendaraan:</label>
-                <select v-show="showEdit" v-model="jenisKendaran" class="select select-bordered w-60 mt-5" required>
-                    <option v-for="list in listKendaraan" :value="list.nama">{{ list.nama }}</option>
-                </select>
-                <input v-model="jenisKendaraan" type="text" class="input input-bordered  my-2 w-60" v-show="!showEdit"
-                    disabled>
-            </div>
-
+        <div
+            class="container flex justify-between rounded-b-lg border-b-2 border-l-2 border-r-2 border-gray-400 p-4 text-md">
             <div class="join join-vertical mx-3">
                 <label class="mr-2 font-bold">PPTK:</label>
                 <select v-model="pptk" class="select select-bordered w-60 mt-5" :disabled="!showEdit" required>
@@ -127,14 +112,18 @@
                     <option v-for="peg in listPegawai" :key="peg.id">{{ peg.nama }}</option>
                 </select>
             </div>
-
             <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold ">Tujuan:</label>
-                <input v-model="tujuanBerangkat" type="text" class="input input-bordered  my-2 w-60" :disabled="!showEdit"
-                    required>
+                <label class="mr-2 font-bold">Tanggal SPT:</label>
+                <input v-model="tanggalSpt" type="date" class="input input-bordered input-lg w-60 h-12"
+                    :disabled="!showEdit" required>
             </div>
-        </div>
+            <div class="join join-vertical mx-3">
+                <label class="mr-2 font-bold">Tanggal SPPD:</label>
+                <input v-model="tanggalSpd" type="date" class="input input-bordered input-lg w-60 h-12"
+                    :disabled="!showEdit" required>
+            </div>
 
+        </div>
 
     </form>
 </template>
@@ -310,4 +299,3 @@ export default {
     }
 }
 </script>
-

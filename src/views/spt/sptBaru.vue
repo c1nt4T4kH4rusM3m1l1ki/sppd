@@ -6,7 +6,8 @@
         <hr>
         <div class="flex justify-end">
             <RouterLink to="/" class="btn btn-sm btn-error  m-3 rounded-md shadow-sm"> Batal</RouterLink>
-            <button class="btn btn-sm btn-accent m-3 rounded-md shadow-sm" v-on:click.prevent="postPegawai">Kirim</button>
+            <button class="btn btn-sm btn-accent m-3 rounded-md shadow-sm"
+                v-on:click.prevent="postPegawai">Kirim</button>
         </div>
 
         <div class="container bg-emerald-400 rounded-t-xl grid grid-cols-2 p-4">
@@ -22,22 +23,8 @@
             </div>
         </div>
         <!-- untuk dan pengikut -->
-        <div class="container bg-emerald-400 rounded-b-xl grid grid-cols-2  p-4">
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Untuk (Misi SPT) :</label>
-                <ul class="grid grid-cols-1">
-                    <li>
-                        <input v-model="parta" type="text" class="input input-bordered w-full my-2" required>
-                    </li>
-                    <li>
-                        <input v-model="partb" type="text" class="input input-bordered w-full my-2">
-                    </li>
-                    <li>
-                        <input v-model="partc" type="text" class="input input-bordered w-full my-2">
-                    </li>
+        <div class="container bg-emerald-400  grid grid-cols-2  p-4">
 
-                </ul>
-            </div>
             <div class="join join-vertical mx-3">
                 <div class="grid grid-cols-2">
                     <div>
@@ -65,45 +52,44 @@
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="grid grid-cols-2">
+                <div>
+                    <!-- tanggal Berangkat Kembali -->
+                    <div class="join join-vertical mx-3">
+                        <label class="mr-2 font-bold">Berangkat:</label>
+                        <input v-model="tanggalBerangkat" type="date"
+                            class="input input-bordered w-60 h-12 input-lg text-md" required>
+                    </div>
+                    <div class="join join-vertical mx-3 mt-5">
+                        <label class="mr-2 font-bold">Kembali:</label>
+                        <input v-model="tanggalKembali" type="date"
+                            class="input w-60 h-12 input-bordered input-lg text-md" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="join join-vertical mx-3">
+                        <label class="mr-2 font-bold ">Tujuan:</label>
+                        <input v-model="tujuanBerangkat" type="text" class="input input-bordered  my-2 w-60 " required>
+                    </div>
+                    <div class="join join-vertical mx-3 mt-5">
+                        <label class="mr-2 font-bold">Kendaraan:</label>
+                        <select v-model="jenisKendaran" class="select select-bordered w-60 mt-5" required>
+                            <option></option>
+                            <option>Kendaraan Dinas </option>
+                            <option selected>Kendaraan Umum</option>
+                            <option>Kendaraan Operasional</option>
+                        </select>
+                    </div>
+                </div>
+
 
             </div>
         </div>
 
-        <hr>
         <!-- TANGGAL-->
         <!-- tanggal SPT -->
-        <h2 class="text-center font-bold text-xl my-5">Tanggal</h2>
-        <div class="container bg-emerald-400 rounded-t-xl grid grid-cols-4  p-4">
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Tanggal SPT:</label>
-                <input v-model="tanggalSpt" type="date" class="input input-bordered input-lg text-md" required>
-            </div>
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Tanggal SPPD:</label>
-                <input v-model="tanggalSpd" type="date" class="input input-bordered input-lg text-md" required>
-            </div>
-            <!-- tanggal Berangkat Kembali -->
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Berangkat:</label>
-                <input v-model="tanggalBerangkat" type="date" class="input input-bordered input-lg text-md" required>
-            </div>
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Kembali:</label>
-                <input v-model="tanggalKembali" type="date" class="input input-bordered input-lg text-md" required>
-            </div>
-        </div>
-
-        <div class="container bg-emerald-400 mb-40 p-4 rounded-b-xl grid grid-cols-3 ">
-
-            <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold">Kendaraan:</label>
-                <select v-model="jenisKendaran" class="select select-bordered w-60 mt-5" required>
-                    <option></option>
-                    <option>Kendaraan Dinas </option>
-                    <option selected>Kendaraan Umum</option>
-                    <option>Kendaraan Operasional</option>
-                </select>
-            </div>
+        <div class="container bg-emerald-400 rounded-b-xl flex justify-between p-4 mb-[100px]">
 
             <div class="join join-vertical mx-3">
                 <label class="mr-2 font-bold">PPTK:</label>
@@ -112,10 +98,15 @@
                     <option v-for="peg in listPegawai" :key="peg.id">{{ peg.nama }}</option>
                 </select>
             </div>
-
             <div class="join join-vertical mx-3">
-                <label class="mr-2 font-bold ">Tujuan:</label>
-                <input v-model="tujuanBerangkat" type="text" class="input input-bordered  my-2 w-60 " required>
+                <label class="mr-2 font-bold">Tanggal SPT:</label>
+                <input v-model="tanggalSpt" type="date" class="input input-bordered input-lg text-md w-60 h-12"
+                    required>
+            </div>
+            <div class="join join-vertical mx-3">
+                <label class="mr-2 font-bold">Tanggal SPPD:</label>
+                <input v-model="tanggalSpd" type="date" class="input input-bordered input-lg text-md w-60 h-12"
+                    required>
             </div>
         </div>
 
@@ -134,9 +125,6 @@ export default {
             // v-model
             dasar: 'Nota Dinas dari Kepala Balitbang Kota Sungai Nomor Penuh 500.6.18/.../I/2024/BALITBANG Tanggal....2024 tentang .....',
             maksud: '',
-            parta: '',
-            partb: '',
-            partc: '',
             person: '',
             pengikut1: '',
             pengikut2: '',
